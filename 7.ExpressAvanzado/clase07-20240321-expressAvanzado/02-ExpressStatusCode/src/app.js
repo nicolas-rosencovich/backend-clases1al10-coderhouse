@@ -3,13 +3,15 @@ const PORT=3000;
 
 const app=express();
 
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.json());//Y con esta podemos acceder a esa infomación...
+app.use(express.urlencoded({extended:true}));//Cuando queramos recibir info compleja desde el front, ya que podemos recibir archivos en formato que no solo sea texto.Con esta expresión lo vamos a pdoer interpretar desde express
 
 app.get('/',(req,res)=>{
     res.setHeader('Content-Type','text/plain');
     res.status(200).send('OK');
 })
+
+
 
 app.get("/acceso",(req,res)=>{
     let usuario=req.query.usuario
@@ -40,6 +42,13 @@ app.get('*',(req,res)=>{
     });
 });
 
+//Le asignamos una variable al listen 
+//y ahora podremos ejecturar varias funciones con su variabl. Será más facil interactuar, aunque en general no lo vamos a utilizar
 const server=app.listen(PORT,()=>{
     console.log(`Server escuchando en puerto ${PORT}`);
 });
+
+
+  
+
+
